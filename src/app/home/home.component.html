@@ -1,0 +1,107 @@
+<form action="" class="">
+  <div>
+    <div>
+      <p>Name</p>
+      <input name="carName" [(ngModel)]="carName" type="text" />
+    </div>
+    <div>
+      <p>Price</p>
+      <input name="price" [(ngModel)]="price" type="text" />
+    </div>
+    <div>
+      <p>Quantity</p>
+      <input name="quantity" [(ngModel)]="quantity" type="text" />
+    </div>
+    <div>
+      <p>Car Model</p>
+      <select name="Car Model" id="">
+        <option value="">Toyota</option>
+        <option value="">Tesla</option>
+        <option value="">Honda</option>
+        <option value="">Benz</option>
+        <option value="">Lexus</option>
+      </select>
+    </div>
+  </div>
+  <button (click)="submitForm()" type="button" class="btn btn-primary mt-2">
+    Submit
+  </button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th class="p-3">Name</th>
+      <th class="p-3">Price</th>
+      <th class="p-3">Quantity</th>
+      <th class="p-3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="details == ''">
+      <td>There are no items</td>
+    </tr>
+    <tr *ngFor="let i = index; let item; of: details">
+      <td>{{ item.name }}</td>
+      <td>{{ item.price }}</td>
+      <td>{{ item.quantity }}</td>
+      <td><button (click)="edit(i)">edit</button></td>
+      <td><button (click)="del(i)">&times;</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="showInput">
+  <!-- <input hidden ngModel="updated1" [(ngModel)]="updatedCarName"  name="updatedCarName" type="text" /> -->
+  <input
+    value="{{ infoToBeUpdated.name }}"
+    [(ngModel)]="updatedCarName"
+    name="updatedCarName"
+    type="text"
+  />
+  <input
+    value="{{ infoToBeUpdated.price }}"
+    [(ngModel)]="updatedPrice"
+    name="updatedPrice"
+    type="text"
+  />
+  <input
+    value="{{ infoToBeUpdated.quantity }}"
+    [(ngModel)]="updatedQuantity"
+    name="updatedQuantity"
+    type="text"
+  />
+
+  <button (click)="update(updated1)" class="btn btn-primary">Done</button>
+</div>
+
+<div>
+  <input
+    type="text"
+    [(ngModel)]="name"
+    #ctrl="ngModel"
+    placeholder="Enter your name"
+  />
+  <br />
+  <button (click)="saveName()">Save</button>
+  <button (click)="getName()">Get</button>
+  <br />
+  <!-- <strong>Name: {{storeValue}}</strong>  -->
+  <button mat-button color="warn">Warn</button>
+  <button mat-raised-button color="warn">Warn</button>
+  <button mat-stroked-button color="primary">Primary</button>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> This is the expansion title </mat-panel-title>
+      <mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+
+  <!-- {{ username }} -->
+</div>
+<mat-card>
+  <mat-card-content>Simple card</mat-card-content>
+</mat-card>
